@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Info</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no">
+    <link rel="stylesheet" href="assets/css/window.css">
+    <link rel="stylesheet" href="assets/css/meter.css">
+    <link rel="stylesheet" href="assets/css/kaios-toaster.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <meta name="defaultLanguage" content="en-US">
+    <meta name="availableLanguages" content="en-US, vi-VN">
+    <link rel="localization" href="assets/locales/{locale}.properties">
+    <script src="assets/js/lib/l10n.js"></script>
+  </head>
+  <body>
+    <header class="status-bar"></header>
+    <main id="home-content-pane-location" class="content content-pane hide-content-pane-left">
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-total-cases-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-total-cases-label" class="info-entry-data-label" data-l10n-id="home-location-total-cases" data-l10n-args='{ "country": "N/A" }'>Total cases (N/A)</p>
+      </section>
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-new-cases-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-new-cases-label" class="info-entry-data-label" data-l10n-id="home-location-new-cases" data-l10n-args='{ "country": "N/A" }'>New cases (N/A)</p>
+      </section>
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-total-deaths-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-total-deaths-label" class="info-entry-data-label" data-l10n-id="home-location-total-deaths" data-l10n-args='{ "country": "N/A" }'>Total deaths (N/A)</p>
+      </section>
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-new-deaths-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-new-deaths-label" class="info-entry-data-label" data-l10n-id="home-location-new-deaths" data-l10n-args='{ "country": "N/A" }'>New deaths (N/A)</p>
+      </section>
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-total-recovered-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-total-recovered-label" class="info-entry-data-label" data-l10n-id="home-location-total-recovered" data-l10n-args='{ "country": "N/A" }'>Total recovered (N/A)</p>
+      </section>
+      <section class="info-entry navigable">
+        <h1 id="home-location-info-entry-new-recovered-number" class="info-entry-data-main">N/A</h1>
+        <p id="home-location-info-entry-new-recovered-label" class="info-entry-data-label" data-l10n-id="home-location-new-recovered" data-l10n-args='{ "country": "N/A" }'>New recovered (N/A)</p>
+      </section>
+    </main>
+    <main class="content">
+      <div id="home-meter-refresh" class="meter-container">
+        <div class="meter-bar"></div>
+      </div>
+      <div id="home-main-info-entries">
+        <section class="info-entry navigable">
+          <h1 id="home-main-info-entry-confirmed" class="info-entry-data-main">N/A</h1>
+          <p class="info-entry-data-label" data-l10n-id="home-main-total-confirmed">Total cases (world)</p>
+        </section>
+        <section class="info-entry navigable">
+          <h1 id="home-main-info-entry-deaths" class="info-entry-data-main">N/A</h1>
+          <p class="info-entry-data-label" data-l10n-id="home-main-total-deaths">Total deaths (world)</p>
+        </section>
+        <section class="info-entry navigable">
+          <h1 id="home-main-info-entry-recovered" class="info-entry-data-main">N/A</h1>
+          <p class="info-entry-data-label" data-l10n-id="home-main-total-recovered">Total recovered (world)</p>
+        </section>
+        <section class="info-entry navigable">
+          <span id="home-main-info-entry-refresh" class='info-entry-data-refresh', data-l10n-id="home-main-last-refreshed", data-l10n-args='{ "date": "N/A" }'>Last refreshed: N/A</span>
+        </section>
+      </div>
+    </main>
+    <main id="home-content-pane-information" class="content content-pane hide-content-pane-right">
+      <h1>Right</h1>
+      <!-- TODO: information page -->
+    </main>
+    <footer class="softkeys-bar">
+      <span class="softkey-container">
+        <div id="softkey-left" data-l10n-id="softkey-left-none"></div>
+      </span>
+      <span class="softkey-container">
+        <div id="softkey-center" data-l10n-id="softkey-center-none"></div>
+      </span>
+      <span class="softkey-container">
+        <div id="softkey-right" data-l10n-id="softkey-right-info"></div>
+      </span>
+    </footer>
+    <script src="assets/js/lib/codegrid.js" defer></script>
+    <script src="assets/js/lib/covid19-api/covid19-api.js" defer></script>
+    <script src="assets/js/lib/meter-controller.js" defer></script>
+    <script src="assets/js/lib/naviboard.min.js" defer></script>
+    <script src="assets/js/lib/kaiads.v3.min.js" defer></script>
+    <script src="assets/js/lib/kaios-toaster.js" defer></script>
+    <script src="assets/js/index.js" defer></script>
+  </body>
+</html>

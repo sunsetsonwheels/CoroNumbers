@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0",
+  "name": "COVID-19 Numbers",
+  "description": "Track COVID-19 numbers and get info to protect yourself.",
+  "developer": {
+    "name": "Nam Thanh Nguyen",
+    "url": "https://jkelol111.github.io"
+  },
+  "icons": {
+    "56": "/assets/icons/covid19info-56.png",
+    "112": "/assets/icons/covid19info-112.png"
+  },
+  "theme_color": "#363636",
+  "chrome": {
+    "statusbar": "overlap"
+  },
+  "origin": "app://covid19info.jkelol111.me",
+  "launch_path": "/index.html",
+  "type": "privileged",
+  "permissions": {
+    "systemXHR": {
+      "description": "Required to retrieve COVID-19 statistics."
+    },
+    "geolocation": {
+      "description": "Required to determine location for local COVID-19 statistics."
+    }
+  },
+  "dependencies": {
+		"ads-sdk": "1.3.0"
+	},
+  "locales": {
+    "en-US": {
+      "name": "COVID-19 Numbers",
+      "subtitle": "Track COVID-19 numbers.",
+      "description": "Track COVID-19 numbers and get info to protect yourself."
+    },
+    "vi-VN": {
+      "name": "Thong tin COVID-19",
+      "subtitle": "So lieu COVID-19",
+      "description": "Track COVID-19 numbers and get info to protect yourself."
+    }
+  },
+  "default_locale": "en-US",
+  "categories": [
+    "utilities",
+    "health",
+    "book/reference"
+  ]
+}

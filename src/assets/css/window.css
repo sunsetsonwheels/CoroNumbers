@@ -1,0 +1,127 @@
+:root {
+  --theme-color: #363636;
+  --content-pane-transition-speed: 0.6s;
+  --z-index-status-bars: 10;
+  --z-index-options: 20;
+  --z-index-content-pane: 30;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans";
+}
+
+.status-bar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 26px;
+  background-color: var(--theme-color);
+  z-index: var(--z-index-status-bars);
+}
+
+.header-bar {
+  position: fixed;
+  top: 26px;
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 17px;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: var(--theme-color);
+}
+
+.show-content-pane-left, .hide-content-pane-left {
+  transition-property: right;
+}
+
+.show-content-pane-left {
+  right: 0% !important;
+}
+
+.hide-content-pane-left {
+  right: 100% !important;
+}
+
+.show-content-pane-right, .hide-content-pane-right {
+  transition-property: left;
+}
+
+.show-content-pane-right {
+  left: 0% !important;
+}
+
+.hide-content-pane-right {
+  left: 100% !important;
+}
+
+.content-with-header {
+  top: 54px;
+  height: calc(100% - 84px);
+}
+
+.content-pane {
+  z-index: var(--z-index-content-pane);
+  transition-duration: var(--content-pane-transition-speed);
+}
+
+.content {
+  position: fixed;
+  top: 26px;
+  bottom: 30px;
+  width: 100%;
+  height: calc(100% - 56px);
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.softkeys-bar {
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  bottom: 0px; 
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  z-index: var(--z-index-status-bars);
+  background-color: #dadada;
+  color: #000000;
+}
+
+.softkey-container {
+  width: 33.3333333333%;
+  white-space: nowrap;
+}
+
+#softkey-left, #softkey-center, #softkey-right {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#softkey-left, #softkey-right {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#softkey-left {
+  text-align: left;
+}
+
+#softkey-center {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#softkey-right {
+  text-align: right;
+}

@@ -1,0 +1,10 @@
+.meter-container {
+  width: 100%;
+  background-color: #D3D3D3;
+}
+
+.meter-bar {
+  width: 0%;
+  height: 2px;
+  background-color: #8500DC;
+}
