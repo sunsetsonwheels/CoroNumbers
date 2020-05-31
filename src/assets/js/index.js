@@ -7,7 +7,68 @@ var mainRefreshMeterController = new MeterController('home-meter-refresh', 'inde
 const MAIN_NAV_ELEMENT_ID = 'home-main-data-entries'
 var countries = {}
 var currentCountry = null
+var isDataLoaded = false
 
+function setSoftkeys (leftLocalizationKey, centerLocalizationKey, rightLocalizationKey) {
+  document.getElementById('softkey-left').setAttribute('data-l10n-id', 'softkey-left-' + leftLocalizationKey)
+  document.getElementById('softkey-center').setAttribute('data-l10n-id', 'softkey-center-' + centerLocalizationKey)
+  document.getElementById('softkey-right').setAttribute('data-l10n-id', 'softkey-right-' + rightLocalizationKey)
+}
+
+function defaultKeyHandler (e) {
+  switch (e.key) {
+    case 'SoftLeft':
+      if (isDataLoaded && currentCountry !== 'null') {
+        openPane('left')
+      }
+      break
+    case 'Enter':
+      refreshData()
+      break
+    case 'SoftRight':
+      openPane('right')
+      break
+  }
+}
+
+function resetPanes () {
+  currentActivePane = null
+  if (currentCountry === null || !isDataLoaded) {
+    setSoftkeys('none', 'refresh', 'info')
+  } else {
+    setSoftkeys('location', 'refresh', 'info')
+  }
+  naviBoard.setNavigation(MAIN_NAV_ELEMENT_ID)
+  window.onkeydown = defaultKeyHandler
+}
+
+function closePane () {
+  if (currentActivePane !== null) {
+    var currentActivePaneElement = document.getElementById(panes[currentActivePane].htmlElementId)
+    currentActivePaneElement.classList.remove('show-content-pane-' + currentActivePane)
+    currentActivePaneElement.classList.add('hide-content-pane-' + currentActivePane)
+    resetPanes()
+  } else {
+    console.warn('No pane is currently active. Not closing any panes.')
+  }
+}
+
+function openPane (pane) {
+  if (pane in panes) {
+    try {
+      var currentActivePaneElement = document.getElementById(panes[pane].htmlElementId)
+      currentActivePaneElement.classList.remove('hide-content-pane-' + pane)
+      currentActivePaneElement.classList.add('show-content-pane-' + pane)
+      panes[pane].controller.onShow()
+      currentActivePane = pane
+    } catch (err) {
+      console.error('Opening pane failed! Error: ' + err)
+      resetPanes()
+    }
+  } else {
+    console.warn('Non-existent pane "' + pane + '" being opened. Not opening any panes.')
+  }
+}
 
 class CountryPaneController {
   onShow () {
@@ -42,6 +103,7 @@ class InformationPaneController {
     naviBoard.setNavigation(panes.right.htmlElementId)
     document.body.onclick = (e) => {
       if (e.target.className && e.target.className.includes('info-entry')) {
+        const INFO_DATA_TAG = e.target.getAttribute('data-covid19-info')
         if (INFO_DATA_TAG) {
           navigator.mozL10n.formatValue('home-info-body-' + INFO_DATA_TAG, {
             newline: '\n\n'
@@ -89,70 +151,10 @@ var panes = {
   }
 }
 
-function defaultKeyHandler (e) {
-  switch (e.key) {
-    case 'SoftLeft':
-      if (currentCountry !== 'null') {
-        openPane('left')
-      }
-      break
-    case 'Enter':
-      refreshData()
-      break
-    case 'SoftRight':
-      openPane('right')
-      break
-  }
-}
-
-function resetPanes () {
-  currentActivePane = null
-  if (currentCountry === null) {
-    setSoftkeys('none', 'refresh', 'info')
-  } else {
-    setSoftkeys('location', 'refresh', 'info')
-  }
-  naviBoard.setNavigation(MAIN_NAV_ELEMENT_ID)
-  window.onkeydown = defaultKeyHandler
-}
-
-function closePane () {
-  if (currentActivePane !== null) {
-    var currentActivePaneElement = document.getElementById(panes[currentActivePane].htmlElementId)
-    currentActivePaneElement.classList.remove('show-content-pane-' + currentActivePane)
-    currentActivePaneElement.classList.add('hide-content-pane-' + currentActivePane)
-    resetPanes()
-  } else {
-    console.warn('No pane is currently active. Not closing any panes.')
-  }
-}
-
-function openPane (pane) {
-  if (pane in panes) {
-    try {
-      var currentActivePaneElement = document.getElementById(panes[pane].htmlElementId)
-      currentActivePaneElement.classList.remove('hide-content-pane-' + pane)
-      currentActivePaneElement.classList.add('show-content-pane-' + pane)
-      panes[pane].controller.onShow()
-      currentActivePane = pane
-    } catch (err) {
-      console.error('Opening pane failed! Error: ' + err)
-      resetPanes()
-    }
-  } else {
-    console.warn('Non-existent pane "' + pane + '" being opened. Not opening any panes.')
-  }
-}
-
-function setSoftkeys (leftLocalizationKey, centerLocalizationKey, rightLocalizationKey) {
-  document.getElementById('softkey-left').setAttribute('data-l10n-id', 'softkey-left-' + leftLocalizationKey)
-  document.getElementById('softkey-center').setAttribute('data-l10n-id', 'softkey-center-' + centerLocalizationKey)
-  document.getElementById('softkey-right').setAttribute('data-l10n-id', 'softkey-right-' + rightLocalizationKey)
-}
-
 function refreshData () {
   function refreshCompleteCb () {
     function adDisplayedCb () {
+      isDataLoaded = true
       window.onkeydown = defaultKeyHandler
       if (currentCountry === null) {
         setSoftkeys('none', 'refresh', 'info')
@@ -212,6 +214,7 @@ function refreshData () {
   }
 
   window.onkeydown = undefined
+  isDataLoaded = false
 
   closePane()
   mainRefreshMeterController.show()
@@ -274,6 +277,7 @@ function refreshData () {
   }).catch((err) => {
     naviBoard.destroyNavigation(MAIN_NAV_ELEMENT_ID)
     setSoftkeys('none', 'refresh', 'info')
+    isDataLoaded = false
     window.onkeydown = defaultKeyHandler
     mainRefreshMeterController.stop()
     mainRefreshMeterController.hide()
