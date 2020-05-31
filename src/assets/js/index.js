@@ -4,7 +4,7 @@ var currentActivePane = null
 
 var mainRefreshMeterController = new MeterController('home-meter-refresh', 'indeterminate')
 
-const MAIN_NAV_ELEMENT_ID = 'home-main-info-entries'
+const MAIN_NAV_ELEMENT_ID = 'home-main-data-entries'
 var countries = {}
 var currentCountry = null
 
@@ -38,14 +38,41 @@ class CountryPaneController {
 class InformationPaneController {
   onShow () {
     naviBoard.destroyNavigation(MAIN_NAV_ELEMENT_ID)
-    setSoftkeys('back', 'none', 'none')
+    setSoftkeys('back', 'read', 'none')
+    naviBoard.setNavigation(panes.right.htmlElementId)
+    document.body.onclick = (e) => {
+      if (e.target.className && e.target.className.includes('info-entry')) {
+        if (INFO_DATA_TAG) {
+          navigator.mozL10n.formatValue('home-info-body-' + INFO_DATA_TAG, {
+            newline: '\n\n'
+          }).then((text) => {
+            alert(text)
+          }).catch(() => {
+            alert('Info body not found for selected info topic.')
+          })
+        }
+      }
+    }
     window.onkeydown = this.customKeyHandler
   }
 
   customKeyHandler (e) {
     switch (e.key) {
       case 'SoftLeft':
+        document.body.onclick = undefined
+        naviBoard.destroyNavigation(panes.right.htmlElementId)
         closePane()
+        break
+      case 'Enter':
+        naviBoard.getActiveElement().click()
+        break
+      case 'ArrowUp':
+      case 'ArrowDown':
+        naviBoard.getActiveElement().scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+          inline: 'nearest'
+        })
         break
     }
   }
@@ -157,7 +184,7 @@ function refreshData () {
         })
       }
 
-      document.getElementById('home-main-info-entry-refresh').setAttribute('data-l10n-args', JSON.stringify({
+      document.getElementById('home-main-data-entry-refresh').setAttribute('data-l10n-args', JSON.stringify({
         date: (new Date())
       }))
 
@@ -184,7 +211,7 @@ function refreshData () {
     })
   }
 
-  window.onkeydown = () => {}
+  window.onkeydown = undefined
 
   closePane()
   mainRefreshMeterController.show()
@@ -192,9 +219,9 @@ function refreshData () {
   setSoftkeys('none', 'none', 'none')
 
   COVID19API.summary().then((summary) => {
-    document.getElementById('home-main-info-entry-confirmed').innerText = summary.cases
-    document.getElementById('home-main-info-entry-deaths').innerText = summary.deaths
-    document.getElementById('home-main-info-entry-recovered').innerText = summary.recovered
+    document.getElementById('home-main-data-entry-confirmed').innerText = summary.cases
+    document.getElementById('home-main-data-entry-deaths').innerText = summary.deaths
+    document.getElementById('home-main-data-entry-recovered').innerText = summary.recovered
 
     countries = summary.countries
 
@@ -208,27 +235,25 @@ function refreshData () {
             const L10N_ARG = JSON.stringify({
               country: country.name
             })
-            document.getElementById('home-location-info-entry-total-cases-label').setAttribute('data-l10n-args', L10N_ARG)
-            document.getElementById('home-location-info-entry-new-cases-label').setAttribute('data-l10n-args', L10N_ARG)
-            document.getElementById('home-location-info-entry-total-deaths-label').setAttribute('data-l10n-args', L10N_ARG)
-            document.getElementById('home-location-info-entry-new-deaths-label').setAttribute('data-l10n-args', L10N_ARG)
-            document.getElementById('home-location-info-entry-total-recovered-label').setAttribute('data-l10n-args', L10N_ARG)
-            document.getElementById('home-location-info-entry-new-recovered-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-total-cases-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-new-cases-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-total-deaths-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-new-deaths-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-total-recovered-label').setAttribute('data-l10n-args', L10N_ARG)
+            document.getElementById('home-location-data-entry-new-recovered-label').setAttribute('data-l10n-args', L10N_ARG)
 
-            document.getElementById('home-location-info-entry-total-cases-number').innerText = country.cases.total
-            document.getElementById('home-location-info-entry-new-cases-number').innerText = country.cases.new
-            document.getElementById('home-location-info-entry-total-deaths-number').innerText = country.deaths.total
-            document.getElementById('home-location-info-entry-new-deaths-number').innerText = country.deaths.new
-            document.getElementById('home-location-info-entry-total-recovered-number').innerText = country.recovered.total
-            document.getElementById('home-location-info-entry-new-recovered-number').innerText = country.recovered.new
+            document.getElementById('home-location-data-entry-total-cases-number').innerText = country.cases.total
+            document.getElementById('home-location-data-entry-new-cases-number').innerText = country.cases.new
+            document.getElementById('home-location-data-entry-total-deaths-number').innerText = country.deaths.total
+            document.getElementById('home-location-data-entry-new-deaths-number').innerText = country.deaths.new
+            document.getElementById('home-location-data-entry-total-recovered-number').innerText = country.recovered.total
+            document.getElementById('home-location-data-entry-new-recovered-number').innerText = country.recovered.new
           } else {
             currentCountry = null
           }
-          console.log(currentCountry)
         } else {
           console.log(err)
           currentCountry = null
-          throw err
         }
         refreshCompleteCb()
       })
@@ -260,5 +285,3 @@ function refreshData () {
 }
 
 refreshData()
-
-window.onkeydown = defaultKeyHandler
