@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "name": "COVID-19 Numbers",
-  "description": "Track COVID-19 numbers and get info to protect yourself.",
+  "description": "Track COVID-19 numbers and get info to protect yourself and others.",
   "developer": {
     "name": "Nam Thanh Nguyen",
     "url": "https://jkelol111.github.io"
