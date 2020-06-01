@@ -7,14 +7,14 @@
     "url": "https://jkelol111.github.io"
   },
   "icons": {
-    "56": "/assets/icons/covid19info-56.png",
-    "112": "/assets/icons/covid19info-112.png"
+    "56": "/icons/covid19info-56.png",
+    "112": "/icons/covid19info-112.png"
   },
   "theme_color": "#363636",
   "chrome": {
     "statusbar": "overlap"
   },
-  "origin": "app://covid19info.jkelol111.me",
+  "origin": "app://covid19numbers.jkelol111.me",
   "launch_path": "/index.html",
   "type": "privileged",
   "permissions": {
@@ -32,12 +32,12 @@
     "en-US": {
       "name": "COVID-19 Numbers",
       "subtitle": "Track COVID-19 numbers.",
-      "description": "Track COVID-19 numbers and get info to protect yourself."
+      "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO, we are not responsible for the accuracy of the information provided."
     },
     "vi-VN": {
-      "name": "Thong tin COVID-19",
-      "subtitle": "So lieu COVID-19",
-      "description": "Track COVID-19 numbers and get info to protect yourself."
+      "name": "Thông tin COVID-19",
+      "subtitle": "Số liệu COVID-19",
+      "description": "Theo dõi số liệu COVID-19 và nhận thông tin để bảo vệ chính mình và mọi người khác. Nguồn thông tin từ WHO, chúng tôi không chịu trách nghiệm với độ chuẩn sác của dữ liệu."
     }
   },
   "default_locale": "en-US",

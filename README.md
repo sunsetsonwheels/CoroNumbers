@@ -30,4 +30,4 @@ Nam Thanh Nguyen (jkelol111) et al. 2020-present
 
 ## License
 
-This project is licensed under the *insert license name*
+This project is licensed under the MIT license.

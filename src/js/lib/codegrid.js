@@ -23,7 +23,7 @@
 
 
 // Configuration. Should match generator settings
-var gridPath = 'assets/tiles/',
+var gridPath = 'tiles/',
     worldFile = 'worldgrid.json',
     cellzoom = 5,
     zList = [9, 13];
