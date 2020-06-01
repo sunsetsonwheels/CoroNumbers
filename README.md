@@ -1,4 +1,4 @@
-![COVID-19 Numbers Icon](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/src/assets/icons/covid19info-56.png)
+![COVID-19 Numbers Icon](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/src/icons/covid19info-56.png)
 
 # COVID-19 Numbers for KaiOS
 
