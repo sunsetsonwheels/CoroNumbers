@@ -22,6 +22,7 @@ This project wouldn't have been possible without the help of the following proje
 
 - COVID-19 API: https://covid19api.com/
 - Coronavirus guidance by WHO: https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public
+- `codegrid` by @hlaw: https://github.com/hlaw/codegrid-js
 - App icons by Smashicons @ flaticons.com: https://www.flaticon.com/authors/smashicons
 
 ## Copyright
