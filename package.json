@@ -1,9 +1,10 @@
 {
   "name": "kaios-covid19-numbers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO, we are not responsible for the accuracy of the information provided.",
   "main": "gulpfile.js",
   "scripts": {
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

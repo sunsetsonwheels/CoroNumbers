@@ -9,6 +9,10 @@ var countries = {}
 var currentCountry = null
 var isDataLoaded = false
 
+mainRefreshMeterController.start()
+var grid = codegrid.CodeGrid()
+mainRefreshMeterController.stop()
+
 function setSoftkeys (leftLocalizationKey, centerLocalizationKey, rightLocalizationKey) {
   document.getElementById('softkey-left').setAttribute('data-l10n-id', 'softkey-left-' + leftLocalizationKey)
   document.getElementById('softkey-center').setAttribute('data-l10n-id', 'softkey-center-' + centerLocalizationKey)
@@ -18,8 +22,14 @@ function setSoftkeys (leftLocalizationKey, centerLocalizationKey, rightLocalizat
 function defaultKeyHandler (e) {
   switch (e.key) {
     case 'SoftLeft':
-      if (isDataLoaded && currentCountry !== 'null') {
+      if (isDataLoaded && currentCountry !== null) {
         openPane('left')
+      } else {
+        navigator.mozL10n.formatValue('alert-location-unavailable').then((text) => {
+          alert(text)
+        }).catch(() => {
+          alert('We were unable to acquire your location. You may try again later by using REFRESH.')
+        })
       }
       break
     case 'Enter':
@@ -33,11 +43,7 @@ function defaultKeyHandler (e) {
 
 function resetPanes () {
   currentActivePane = null
-  if (currentCountry === null || !isDataLoaded) {
-    setSoftkeys('none', 'refresh', 'info')
-  } else {
-    setSoftkeys('location', 'refresh', 'info')
-  }
+  setSoftkeys('location', 'refresh', 'info')
   naviBoard.setNavigation(MAIN_NAV_ELEMENT_ID)
   window.onkeydown = defaultKeyHandler
 }
@@ -156,9 +162,8 @@ function refreshData () {
     function adDisplayedCb () {
       isDataLoaded = true
       window.onkeydown = defaultKeyHandler
+      setSoftkeys('location', 'refresh', 'info')
       if (currentCountry === null) {
-        setSoftkeys('none', 'refresh', 'info')
-
         navigator.mozL10n.formatValue('toast-refresh-partial').then((text) => {
           kaiosToaster({
             message: text,
@@ -171,8 +176,6 @@ function refreshData () {
           })
         })
       } else {
-        setSoftkeys('location', 'refresh', 'info')
-
         navigator.mozL10n.formatValue('toast-refresh-full').then((text) => {
           kaiosToaster({
             message: text,
@@ -213,6 +216,7 @@ function refreshData () {
     })
   }
 
+  naviBoard.destroyNavigation(MAIN_NAV_ELEMENT_ID)
   window.onkeydown = undefined
   isDataLoaded = false
 
@@ -229,7 +233,6 @@ function refreshData () {
     countries = summary.countries
 
     navigator.geolocation.getCurrentPosition((pos) => {
-      var grid = codegrid.CodeGrid()
       grid.getCode(pos.coords.latitude, pos.coords.longitude, (err, code) => {
         if (err === null && typeof code === 'string') {
           currentCountry = code.toUpperCase()
@@ -262,11 +265,6 @@ function refreshData () {
       })
     }, (err) => {
       console.error(err)
-      navigator.mozL10n.formatValue('alert-location-unavailable').then((text) => {
-        alert(text)
-      }).catch(() => {
-        alert('We were unable to acquire your location. You may try again later by using REFRESH.')
-      })
       refreshCompleteCb()
       currentCountry = null
     }, {
@@ -275,7 +273,7 @@ function refreshData () {
       maximumAge: 3600000
     })
   }).catch((err) => {
-    naviBoard.destroyNavigation(MAIN_NAV_ELEMENT_ID)
+    naviBoard.setNavigation(MAIN_NAV_ELEMENT_ID)
     setSoftkeys('none', 'refresh', 'info')
     isDataLoaded = false
     window.onkeydown = defaultKeyHandler

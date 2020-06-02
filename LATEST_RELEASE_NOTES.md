@@ -1,1 +1,3 @@
-Initial release
+- Added Vietnamese translation
+- Optimize softkey navigation
+- Optimize location lookup

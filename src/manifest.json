@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "COVID-19 Numbers",
   "description": "Track COVID-19 numbers and get info to protect yourself and others.",
   "developer": {
@@ -34,7 +34,7 @@
       "subtitle": "Track COVID-19 numbers.",
       "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO, we are not responsible for the accuracy of the information provided."
     },
-    "vi-VN": {
+    "vi": {
       "name": "Thông tin COVID-19",
       "subtitle": "Số liệu COVID-19",
       "description": "Theo dõi số liệu COVID-19 và nhận thông tin để bảo vệ chính mình và mọi người khác. Nguồn thông tin từ WHO, chúng tôi không chịu trách nghiệm với độ chuẩn sác của dữ liệu."
