@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "COVID-19 Numbers",
   "description": "Track COVID-19 numbers and get info to protect yourself and others.",
   "developer": {
@@ -19,14 +19,14 @@
   "type": "privileged",
   "permissions": {
     "systemXHR": {
-      "description": "Required to retrieve COVID-19 statistics."
+      "description": "Required to retrieve COVID-19 statistics from the web."
     },
     "geolocation": {
       "description": "Required to determine location for local COVID-19 statistics."
     }
   },
   "dependencies": {
-		"ads-sdk": "1.3.0"
+		"ads-sdk": "1.4.1"
 	},
   "locales": {
     "en-US": {
