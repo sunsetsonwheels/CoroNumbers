@@ -1,20 +1,20 @@
 {
-  "version": "1.0.2",
-  "name": "COVID-19 Numbers",
+  "version": "1.0.3",
+  "name": "CoroNumbers",
   "description": "Track COVID-19 numbers and get info to protect yourself and others.",
   "developer": {
-    "name": "Nam Thanh Nguyen",
+    "name": "Nam Thanh Nguyen (jkelol111)",
     "url": "https://jkelol111.github.io"
   },
   "icons": {
-    "56": "/icons/covid19info-56.png",
-    "112": "/icons/covid19info-112.png"
+    "56": "/icons/coronumbers-56.png",
+    "112": "/icons/coronumbers-112.png"
   },
   "theme_color": "#363636",
   "chrome": {
     "statusbar": "overlap"
   },
-  "origin": "app://covid19numbers.jkelol111.me",
+  "origin": "app://coronumbers.jkelol111.me",
   "launch_path": "/index.html",
   "type": "privileged",
   "permissions": {
@@ -30,14 +30,14 @@
 	},
   "locales": {
     "en-US": {
-      "name": "COVID-19 Numbers",
+      "name": "CoroNumbers",
       "subtitle": "Track COVID-19 numbers.",
-      "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO, we are not responsible for the accuracy of the information provided."
+      "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO and COVID-19 API, we are not responsible for the accuracy of the information provided. Please follow the instructions of your local authorities. We have made fair use of the following data and in no way monetize this content."
     },
     "vi": {
-      "name": "Thông tin COVID-19",
-      "subtitle": "Số liệu COVID-19",
-      "description": "Theo dõi số liệu COVID-19 và nhận thông tin để bảo vệ chính mình và mọi người khác. Nguồn thông tin từ WHO, chúng tôi không chịu trách nghiệm với độ chuẩn sác của dữ liệu."
+      "name": "CoroNumbers",
+      "subtitle": "Xem số liệu COVID-19",
+      "description": "Theo dõi số COVID-19 và nhận thông tin để bảo vệ bản thân và những người khác. Thông tin là từ WHO và COVID-19 API, chúng tôi không chịu trách nhiệm về tính chính xác của thông tin được cung cấp. Hãy làm theo hướng dẫn của chính quyền địa phương của bạn. Chúng tôi đã sử dụng hợp lý các dữ liệu sau và không có cách nào kiếm tiền từ nội dung này."
     }
   },
   "default_locale": "en-US",

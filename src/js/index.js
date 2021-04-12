@@ -157,10 +157,13 @@ var panes = {
   }
 }
 
+var isAdAlreadyDisplayed = false
+
 function refreshData () {
   function refreshCompleteCb () {
     function adDisplayedCb () {
       isDataLoaded = true
+      isAdAlreadyDisplayed = true
       window.onkeydown = defaultKeyHandler
       setSoftkeys('location', 'refresh', 'info')
       if (currentCountry === null) {
@@ -201,19 +204,21 @@ function refreshData () {
       naviBoard.getActiveElement().focus()
     }
 
-    getKaiAd({
-      publisher: '4c1c949f-8463-4551-aa6b-c1b8c1c14edc',
-      app: 'COVID-19 Numbers',
-      slot: 'refresh',
-      onerror: err => {
-        console.error('KaiAds error:', err)
-        adDisplayedCb()
-      },
-      onready: ad => {
-        ad.on('close', () => adDisplayedCb())
-        ad.call('display')
-      }
-    })
+    if (!isAdAlreadyDisplayed) {
+      getKaiAd({
+        publisher: '4c1c949f-8463-4551-aa6b-c1b8c1c14edc',
+        app: 'CoroNumbers',
+        slot: 'refresh',
+        onerror: err => {
+          console.error('KaiAds error:', err)
+          adDisplayedCb()
+        },
+        onready: ad => {
+          ad.on('close', () => adDisplayedCb())
+          ad.call('display')
+        }
+      })
+    }
   }
 
   naviBoard.destroyNavigation(MAIN_NAV_ELEMENT_ID)

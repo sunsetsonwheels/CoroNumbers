@@ -1,6 +1,6 @@
-![COVID-19 Numbers Icon](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/src/icons/covid19info-56.png)
+![CoroNumbers Icon](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/src/icons/coronnumbers-56.png)
 
-# COVID-19 Numbers for KaiOS
+# CoroNumbers for KaiOS
 
 Displays COVID-19 numbers around the world and locally (with the use of location), as well as guidance from the WHO.
 

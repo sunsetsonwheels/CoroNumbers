@@ -149,7 +149,7 @@ function cpOmniSDManifestsTask () {
 function zipOmniSDTask () {
   return src([BUILD_FOLDER + 'application.zip', OMNISD_BUILD_FOLDER + 'tmp/*'])
     .pipe(plumber({ errorHandler: onErr }))
-    .pipe(zip('covid19-numbers-' + APP_VERSION + '-' + BUILD_TARGET + '-omnisd.zip'))
+    .pipe(zip('coronumbers-' + APP_VERSION + '-' + BUILD_TARGET + '-omnisd.zip'))
     .pipe(plumber.stop())
     .pipe(dest(OMNISD_BUILD_FOLDER))
 }
