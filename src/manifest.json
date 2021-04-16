@@ -1,7 +1,7 @@
 {
   "version": "1.0.3",
   "name": "CoroNumbers",
-  "description": "Track COVID-19 numbers and get info to protect yourself and others.",
+  "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO and COVID-19 API, we are not responsible for the accuracy of the information provided. Please follow the instructions of your local authorities. We have made fair use of the following data and in no way monetize this content.",
   "developer": {
     "name": "Nam Thanh Nguyen (jkelol111)",
     "url": "https://jkelol111.github.io"
