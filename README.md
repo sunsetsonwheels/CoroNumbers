@@ -31,4 +31,4 @@ Nam Thanh Nguyen (jkelol111) et al. 2020-present
 
 ## License
 
-This project is licensed under the MIT license.
+This project is licensed under the MIT license, excluding KaiAds SDK, which has its own license available [here](https://www.kaiostech.com/sdk-agreement/).

@@ -19,33 +19,33 @@ const BUILD_TARGET = 'stable'
 
 const FPATHS = {
   js: {
-    src: SOURCE_FOLDER + 'js/**/*.js',
-    src_min: SOURCE_FOLDER + 'js/**/*.min.js',
-    dest: DEPLOY_BUILD_FOLDER + 'js/'
+    src: SOURCE_FOLDER + 'assets/js/**/*.js',
+    src_min: SOURCE_FOLDER + 'assets/js/**/*.min.js',
+    dest: DEPLOY_BUILD_FOLDER + 'assets/js/'
   },
   json: {
-    src: SOURCE_FOLDER + 'tiles/worldgrid.json',
-    dest: DEPLOY_BUILD_FOLDER + 'tiles/'
+    src: SOURCE_FOLDER + 'assets/tiles/worldgrid.json',
+    dest: DEPLOY_BUILD_FOLDER + 'assets/tiles/'
   },
   tiles: {
-    src: [SOURCE_FOLDER + 'tiles/**/*.json', '!' + SOURCE_FOLDER + 'tiles/worldgrid.json'],
-    dest: DEPLOY_BUILD_FOLDER + 'tiles/'
+    src: [SOURCE_FOLDER + 'assets/tiles/**/*.json', '!' + SOURCE_FOLDER + 'assets/tiles/worldgrid.json'],
+    dest: DEPLOY_BUILD_FOLDER + 'assets/tiles/'
   },
   css: {
-    src: SOURCE_FOLDER + 'css/**/*.css',
-    dest: DEPLOY_BUILD_FOLDER + 'css/'
+    src: SOURCE_FOLDER + 'assets/css/**/*.css',
+    dest: DEPLOY_BUILD_FOLDER + 'assets/css/'
   },
   html: {
     src: SOURCE_FOLDER + '*.html',
     dest: DEPLOY_BUILD_FOLDER
   },
   icons: {
-    src: SOURCE_FOLDER + 'icons/**/*.png',
-    dest: DEPLOY_BUILD_FOLDER + 'icons/'
+    src: SOURCE_FOLDER + 'assets/icons/**/*.png',
+    dest: DEPLOY_BUILD_FOLDER + 'assets/icons/'
   },
   locales: {
-    src: SOURCE_FOLDER + 'locales/**/*.properties',
-    dest: DEPLOY_BUILD_FOLDER + 'locales/'
+    src: SOURCE_FOLDER + 'assets/locales/**/*.properties',
+    dest: DEPLOY_BUILD_FOLDER + 'assets/locales/'
   },
   manifest: {
     src: SOURCE_FOLDER + 'manifest.json',

@@ -1,7 +1,7 @@
 class COVID19API {
   static summary () {
     return new Promise ((resolve, reject) => {
-      var worker = new Worker('js/lib/covid19-api/workers/summary-worker.js')
+      var worker = new Worker('/assets/js/lib/covid19-api/workers/summary-worker.js')
       worker.onmessage = (e) => {
         worker.terminate()
         if (e.data.status === 'success') {
@@ -10,6 +10,7 @@ class COVID19API {
           reject(e.data.product)
         }
       }
+      worker.onerror = (err) => reject(err)
       worker.postMessage({
         ready: true
       })
@@ -18,7 +19,7 @@ class COVID19API {
 
   static countries (mode) {
     return new Promise ((resolve, reject) => {
-      var worker = new Worker('js/lib/covid19-api/workers/countries-worker.js')
+      var worker = new Worker('/assets/js/lib/covid19-api/workers/countries-worker.js')
       worker.onmessage = (e) => {
         worker.terminate()
         if (e.data.status === 'success') {
@@ -27,6 +28,7 @@ class COVID19API {
           reject(e.data.product)
         }
       }
+      worker.onerror = (err) => reject(err)
       worker.postMessage({
         ready: true,
         mode: mode

@@ -1,6 +1,6 @@
 {
   "name": "coronumbers",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Track COVID-19 numbers and get info to protect yourself and others.",
   "main": "gulpfile.js",
   "scripts": {

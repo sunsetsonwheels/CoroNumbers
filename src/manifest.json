@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "name": "CoroNumbers",
   "description": "Track COVID-19 numbers and get info to protect yourself and others. Information is from WHO and COVID-19 API, we are not responsible for the accuracy of the information provided. Please follow the instructions of your local authorities. We have made fair use of the following data and in no way monetize this content.",
   "developer": {
@@ -7,8 +7,8 @@
     "url": "https://jkelol111.github.io"
   },
   "icons": {
-    "56": "/icons/coronumbers-56.png",
-    "112": "/icons/coronumbers-112.png"
+    "56": "/assets/icons/coronumbers-56.png",
+    "112": "/assets/icons/coronumbers-112.png"
   },
   "theme_color": "#363636",
   "chrome": {
@@ -26,7 +26,7 @@
     }
   },
   "dependencies": {
-		"ads-sdk": "1.4.1"
+		"ads-sdk": "1.5.0"
 	},
   "locales": {
     "en-US": {
