@@ -3,6 +3,7 @@
 var currentActivePane = null
 
 var mainRefreshMeterController = new MeterController('home-meter-refresh', 'indeterminate')
+var cov19api = new COVID19API()
 
 const MAIN_NAV_ELEMENT_ID = 'home-main-data-entries'
 var countries = {}
@@ -230,7 +231,7 @@ function refreshData () {
   mainRefreshMeterController.start()
   setSoftkeys('none', 'none', 'none')
 
-  COVID19API.summary().then((summary) => {
+  cov19api.summary().then((summary) => {
     document.getElementById('home-main-data-entry-confirmed').innerText = summary.cases
     document.getElementById('home-main-data-entry-deaths').innerText = summary.deaths
     document.getElementById('home-main-data-entry-recovered').innerText = summary.recovered
@@ -279,7 +280,7 @@ function refreshData () {
     })
   }).catch((err) => {
     naviBoard.setNavigation(MAIN_NAV_ELEMENT_ID)
-    setSoftkeys('none', 'refresh', 'info')
+    setSoftkeys('location', 'refresh', 'info')
     isDataLoaded = false
     window.onkeydown = defaultKeyHandler
     mainRefreshMeterController.stop()
