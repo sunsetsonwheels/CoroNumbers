@@ -1,4 +1,4 @@
-![CoroNumbers Icon](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/src/assets/icons/coronumbers-56.png)
+![CoroNumbers Icon](https://github.com/jkelol111/CoroNumbers/raw/master/src/assets/icons/coronumbers-56.png)
 
 # CoroNumbers for KaiOS
 
@@ -6,9 +6,9 @@ Displays COVID-19 numbers around the world and locally (with the use of location
 
 ## Features
 
-![Location screenshot](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/screenshots/location.png)
-![Main screenshot](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/screenshots/main.png)
-![Information screenshot](https://github.com/jkelol111/kaios-covid19-numbers/raw/master/screenshots/information.png)
+![Location screenshot](https://github.com/jkelol111/CoroNumbers/raw/master/screenshots/location.png)
+![Main screenshot](https://github.com/jkelol111/CoroNumbers/raw/master/screenshots/main.png)
+![Information screenshot](https://github.com/jkelol111/CoroNumbers/raw/master/screenshots/information.png)
 
 - Shows COVID-19 numbers by world and current location:
     - Total cases
